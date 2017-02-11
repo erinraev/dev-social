@@ -58,8 +58,12 @@ p {
 p.bio-text {
   color: #000;
   font-family: 'OpenSans', serif;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 14px;
+}
+
+.tagline {
+text-transform: uppercase;
 }
 
 .input-text {
@@ -89,7 +93,7 @@ p.bio-text {
   justify-content: space-between;
 }
 
-.main-social-info {
+.social-wrapper, .initial, .view, .find, .update {
   display: flex;
 }
 
@@ -103,6 +107,8 @@ p.bio-text {
 
 /*  Child Container Styles  */
 
+/*Initial*/
+
 .social-information {
   width: 50%;
   text-align: center;
@@ -113,7 +119,24 @@ p.bio-text {
  width: 50%;
 }
 
+/*View*/
+
+.bio-section {
+  width: 50%;
+}
+
+.friend-col {
+  width: 50%;
+}
+
+
+
+
 /*Body Styles*/
+
+.selected {
+  border-bottom: 2px solid #85FDF3;
+}
 
 .input-row {
   font-size: 16px;
@@ -127,6 +150,23 @@ p.bio-text {
   background: #85FDF3;
 }
 
+.search-bar {
+  width: 100%;
+  height: 25px;
+}
+
+.friend-photos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 45%;
+  height: 200px;
+  margin: 5px;
+}
+
    /*Footer Styles   */
 
 .footer-links {
@@ -134,7 +174,8 @@ p.bio-text {
   width: 90%;
 }
 
-.footer-links ul {
+.footer-links div {
+  font-size: 16px;
   display: flex;
   justify-content: space-between;;
 }

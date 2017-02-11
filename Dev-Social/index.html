@@ -8,6 +8,7 @@
   </head>
   <body ng-app="socialApp">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <div ng-controller="mainController" class="social-wrapper">
     <section class="social-app-wrapper">
       <header class="main-nav">
         <div class="search">
@@ -18,32 +19,86 @@
         <div class="menu-dropdown">
         </div>
       </header>
-      <div ng-controller="mainController" class="main-social-info">
-        <div class="social-information">
-          {{test}}
-          <p>Welcome to DevMountain Social</p>
-          <p>Add Some Info So Friends Can Find You</p>
-          <form class="input-text">
-            <input class="input-row" type="text" name="fname" placeholder="Full Name"><br>
-            <input class="input-row" type="text" name="lname" placeholder="Tagline"><br>
-            <input class="input-row" type="text" name="lname" placeholder="Profile Image URL"><br>
-            <input class="input-row" type="text" name="lname" placeholder="Bio"><br>
-            <input class="submit-button" type="submit" value="Save Changes">
-          </form>
+
+
+        <!-- Initial -->
+        <div class="initial">
+          <div class="social-information">
+            <p>Welcome to DevMountain Social</p>
+            <p>Add Some Info So Friends Can Find You</p>
+            <form class="input-text">
+              <input class="input-row" type="text" ng-model="newName" placeholder="Full Name"><br>
+              <input class="input-row" type="text" ng-model="newTagline" placeholder="Tagline"><br>
+              <input class="input-row" type="text" ng-model="newImg" placeholder="Profile Image URL"><br>
+              <input class="input-row" type="text" ng-model="newBio" placeholder="Bio"><br>
+            </form>
+            <button class="submit-button" ng-click="createUser(newName, newTagline, newImg, newBio)" >submit</button>
+
+          </div>
+          <div class="social-photos">
+            <img src="https://s30.postimg.org/pvas25dzl/Screen_Shot_2017_02_11_at_9_15_58_AM.png">
+          </div>
+          
         </div>
-        <div class="social-photos">
-          <img src="https://s30.postimg.org/pvas25dzl/Screen_Shot_2017_02_11_at_9_15_58_AM.png">
+
+        <!-- View -->
+        <div class="view" ng-show="view">
+          <div class="bio-section">
+            <h1>{{users[0].name}}</h1>
+            <p class="tagline">{{users[0].tagline}}</p>
+            <p class="bio-text">{{users[0].bio}}</p>
+          </div>
+          <div class="friend-col">
+            <img ng-repeat="user in users" class="avatar" ng-src="{{user.img}}">
+          </div>
         </div>
-      </div>
+
+        <!-- Find -->
+        <div class="find" ng-show="find">
+          <div class="bio-section">
+            <h1>{{users[0].name}}</h1>
+            <p class="tagline">{{users[0].tagline}}</p>
+            <p class="bio-text">{{users[0].bio}}</p>
+          </div>
+          <div class="friend-col">
+            <input class="search-bar" ng-model='searchFriend' type="text" placeholder="Search for Friends">
+            <br>
+            <div class="friend-photos">
+              <img ng-repeat="user in users" class="avatar" ng-src="{{user.img}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Update -->
+        <div class="update" ng-show="update">
+          <div class="bio-section">
+            <h1>{{users[0].name}}</h1>
+            <p class="tagline">{{users[0].tagline}}</p>
+            <p class="bio-text">{{users[0].bio}}</p>
+          </div>
+          <div class="social-information">
+            <form class="input-text">
+              <input class="input-row" type="text" placeholder="Full Name"><br>
+              <input class="input-row" type="text" placeholder="Tagline"><br>
+              <input class="input-row" type="text" placeholder="Profile Image URL"><br>
+              <input class="input-row" type="text" placeholder="Bio"><br>
+              <input class="submit-button" type="submit" value="Save Changes">
+            </form>
+          </div>
+        </div>
+
+
+
       <footer class="main-footer">
         <div class="footer-links">
-          <ul class="footer-text">
-            <li ng-class="{selected: view}" ngclick="togglePage('view')">View Friends</li>
-            <li ng-class="{selected: find}" ngclick="togglePage('find')">Find Friends</li>
-            <li ng-class="{selected: update}" ngclick="togglePage('update')">Update Profile</li>
-          </ul>
+          <div class="footer-text">
+            <div ng-class="{selected: view}" ng-click="togglePage('view')">View Friends</div>
+            <div ng-class="{selected: find}" ng-click="togglePage('find')">Find Friends</div>
+            <div ng-class="{selected: update}" ng-click="togglePage('update')">Update Profile</div>
+          </div>
         </div>
       </footer>
+      </div>
     </section>
     <script src="app.js"></script>
     <script src="controllers.js"></script>
