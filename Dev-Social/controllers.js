@@ -1,9 +1,9 @@
 angular.module('socialApp').controller('mainController', function($scope, mainService) {
 
 
-  var pages = ['view', 'find', 'update'];
+  var pages = ['initial', 'landing','view', 'find', 'update'];
 
-
+$scope.initial = true;
 
   $scope.togglePage = function(displayView) {
     pages.forEach(function(page) {

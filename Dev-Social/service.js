@@ -23,13 +23,13 @@ angular.module('socialApp').service('mainService', function(){
       {
         'name': 'Chis Johnson',
         'tagline': 'Pretty fly for a white guy',
-        'img': 'http://img.gagdaily.com/uploads/posts/fun/2013/0000be8b_big.jpg',
-        'bio': 'Grew up in the suburbs of Chicago'
+        'img': 'http://static.boredpanda.com/blog/wp-content/uploads/2016/09/animals-dressed-like-humans-zoo-porraits-yago-partal-35-57d65d0b20586__880.jpg',
+        'bio': 'Work for Goldman Sachs. Recently started making money and I can constantly be heard saying, "Young money, cash money." Like to impress girls with my fancy cars and suave style.'
       },
       {
         'name': 'Gabriel Smith',
         'tagline': 'Pretty fly for a white girl',
-        'img': 'https://media2.giphy.com/media/llmgz2cP4tsHK/200_s.gif',
+        'img': 'http://static.boredpanda.com/blog/wp-content/uploads/2016/09/animals-dressed-like-humans-zoo-porraits-yago-partal-31-57d65cdee96c1__880.jpg',
         'bio': 'Grew up in the suburbs of Minneapolis'
       },
       {
@@ -41,13 +41,19 @@ angular.module('socialApp').service('mainService', function(){
       {
         'name': 'Douglas Jones',
         'tagline': 'Who needs a tagline',
-        'img': 'http://img.gagdaily.com/uploads/posts/fun/2013/0000be8b_big.jpg',
+        'img': 'http://mymodernmet.com/wp/wp-content/uploads/archive/99xUk5rFxULi4uxzkfZa_1082118183.jpeg',
         'bio': 'Likes to eat lots of tacos and recently moved to Portland'
       },
       {
         'name': 'Emma Richards',
         'tagline': 'Too basic for you',
-        'img': 'http://www.placesamazing.com/wp-content/uploads/2014/12/Animals-Dressed-Like-Humans-10.jpg',
+        'img': 'http://static.boredpanda.com/blog/wp-content/uploads/2016/09/animals-dressed-like-humans-zoo-porraits-yago-partal-55-57d65d360deca__880.jpg',
+        'bio': 'Likes Uggs, Starbucks, yoga pants and dragging her boyfriend to sushi restaurants'
+      },
+      {
+        'name': 'Emma Richards',
+        'tagline': 'Too basic for you',
+        'img': 'http://www.placesamazing.com/wp-content/uploads/2014/12/Animals-Dressed-Like-Humans-12.jpg',
         'bio': 'Likes Uggs, Starbucks, yoga pants and dragging her boyfriend to sushi restaurants'
       }
     ];

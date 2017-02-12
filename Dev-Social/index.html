@@ -2,29 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400|Open+Sans:300,400,700" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
-    <title>DevMountain Social | Social Network for Nerds</title>
+    <title>DevMountain Social | Social Network for Anthropomorphics</title>
   </head>
   <body ng-app="socialApp">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
     <div ng-controller="mainController" class="social-wrapper">
     <section class="social-app-wrapper">
+<!-- Header -->
       <header class="main-nav">
-        <div class="search">
+        <img class="search-icon" src="searchicon.svg">
+        <div class="logo">
+          <h4 class="logo-text" ng-click="togglePage('landing')">DevMountain Social</h4>
+          <p style="font-size: 14px; color: #595959">Social Network for Anthropmorphic Friends</p>
         </div>
-        <div class="text-logo">
-          <h4>DevMountain</h4>
-        </div>
-        <div class="menu-dropdown">
-        </div>
+        <img class="menu-icon" src="menudrop.svg">
       </header>
 
-
+<!-- Page Views -->
         <!-- Initial -->
-        <div class="initial">
+        <div class="initial body-wrap" ng-show="initial">
           <div class="social-information">
-            <p>Welcome to DevMountain Social</p>
+            <p>Welcome to <span class="aqua-text">DevMountain Social</span></p>
             <p>Add Some Info So Friends Can Find You</p>
             <form class="input-text">
               <input class="input-row" type="text" ng-model="newName" placeholder="Full Name"><br>
@@ -32,36 +32,63 @@
               <input class="input-row" type="text" ng-model="newImg" placeholder="Profile Image URL"><br>
               <input class="input-row" type="text" ng-model="newBio" placeholder="Bio"><br>
             </form>
-            <button class="submit-button" ng-click="createUser(newName, newTagline, newImg, newBio)" >submit</button>
+            <button class="submit-button" ng-click="createUser(newName, newTagline, newImg, newBio); togglePage('landing')">Let's Get Social!</button>
 
           </div>
           <div class="social-photos">
-            <img src="https://s30.postimg.org/pvas25dzl/Screen_Shot_2017_02_11_at_9_15_58_AM.png">
+            <img src="http://target.scene7.com/is/image/Target/17435271?wid=450&hei=450&fmt=pjpeg">
           </div>
-          
+
+        </div>
+
+        <!-- Landing -->
+        <div class="landing body-wrap" ng-show="landing">
+          <div class="bio-section">
+            <h1>{{mainUser.name}}</h1>
+            <p class="tagline">{{mainUser.tagline}}</p>
+            <p class="bio-text">{{mainUser.bio}}</p>
+          </div>
+          <div class="social-photos">
+            <img class="main-avatar" ng-src="{{mainUser.img}}">
+          </div>
+
         </div>
 
         <!-- View -->
-        <div class="view" ng-show="view">
+        <div class="view body-wrap" ng-show="view">
           <div class="bio-section">
-            <h1>{{users[0].name}}</h1>
-            <p class="tagline">{{users[0].tagline}}</p>
-            <p class="bio-text">{{users[0].bio}}</p>
+            <div class="bio-wrap">
+              <h1>{{mainUser.name}}</h1>
+              <p class="tagline">{{mainUser.tagline}}</p>
+              <p class="bio-text">{{mainUser.bio}}</p>
+            </div>
           </div>
           <div class="friend-col">
-            <img ng-repeat="user in users" class="avatar" ng-src="{{user.img}}">
+            <div class="search-section">
+              <img class="search-input-icon" src="searchicon.svg">
+              <input class="search-bar" ng-model='searchFriend' type="text" placeholder="Friends">
+            </div>
+            <br>
+            <div class="friend-photos">
+              <img ng-repeat="user in users" class="avatar" ng-src="{{user.img}}">
+            </div>
           </div>
         </div>
 
         <!-- Find -->
-        <div class="find" ng-show="find">
+        <div class="find body-wrap" ng-show="find">
           <div class="bio-section">
-            <h1>{{users[0].name}}</h1>
-            <p class="tagline">{{users[0].tagline}}</p>
-            <p class="bio-text">{{users[0].bio}}</p>
+            <div class="bio-wrap">
+              <h1>{{mainUser.name}}</h1>
+              <p class="tagline">{{mainUser.tagline}}</p>
+              <p class="bio-text">{{mainUser.bio}}</p>
+            </div>
           </div>
           <div class="friend-col">
-            <input class="search-bar" ng-model='searchFriend' type="text" placeholder="Search for Friends">
+            <div class="search-section">
+              <img class="search-input-icon" src="searchicon.svg">
+              <input class="search-bar" ng-model='searchFriend' type="text" placeholder="Search for Friends">
+            </div>
             <br>
             <div class="friend-photos">
               <img ng-repeat="user in users" class="avatar" ng-src="{{user.img}}">
@@ -70,25 +97,33 @@
         </div>
 
         <!-- Update -->
-        <div class="update" ng-show="update">
+        <div class="update body-wrap" ng-show="update">
           <div class="bio-section">
-            <h1>{{users[0].name}}</h1>
-            <p class="tagline">{{users[0].tagline}}</p>
-            <p class="bio-text">{{users[0].bio}}</p>
+            <div class="bio-wrap">
+              <h1>{{mainUser.name}}</h1>
+              <p class="tagline">{{mainUser.tagline}}</p>
+              <p class="bio-text">{{mainUser.bio}}</p>
+              <img class="update-avatar" ng-src="{{mainUser.img}}">
+            </div>
           </div>
-          <div class="social-information">
-            <form class="input-text">
-              <input class="input-row" type="text" placeholder="Full Name"><br>
-              <input class="input-row" type="text" placeholder="Tagline"><br>
-              <input class="input-row" type="text" placeholder="Profile Image URL"><br>
-              <input class="input-row" type="text" placeholder="Bio"><br>
-              <input class="submit-button" type="submit" value="Save Changes">
-            </form>
+          <div class="update-col">
+            <div class="profile-setting"><p>Profile Settings</p></div>
+            <div class="update-form">
+              <div class="social-information">
+                <form class="input-text">
+                  <input class="input-row" type="text" placeholder="Full Name"><br>
+                  <input class="input-row" type="text" placeholder="Tagline"><br>
+                  <input class="input-row" type="text" placeholder="Profile Image URL"><br>
+                  <input class="input-row bio-row" type="text" placeholder="Bio"><br>
+                </form>
+              </div>
+            </div>
+            <div class="update-button"><p>Save Changes</p></div>
           </div>
         </div>
 
 
-
+<!-- Footer -->
       <footer class="main-footer">
         <div class="footer-links">
           <div class="footer-text">
