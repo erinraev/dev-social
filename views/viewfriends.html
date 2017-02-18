@@ -1,0 +1,27 @@
+<!-- View -->
+<div class="view body-wrap" ng-show="view">
+  <div class="bio-section">
+    <div class="bio-wrap">
+      <h1>{{mainUser.name}}</h1>
+      <p class="tagline">{{mainUser.tagline}}</p>
+      <p class="bio-text">{{mainUser.bio}}</p>
+    </div>
+  </div>
+  <div class="friend-col">
+    <div class="search-section">
+      <img class="search-input-icon" src="searchicon.svg">
+      <input class="search-bar" ng-model='searchFriend.name' type="text" placeholder="Friends">
+    </div>
+    <br>
+    <div class="friend-photos">
+      <div class="image-container" ng-repeat="user in users" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+        <div class="image-overlay" ng-show="hoverEdit">
+          <p class="hover-text">{{user.name}}</p>
+          <div class="view-profile" ng-click="togglePage('friendview', user)">View Profile</div>
+        </div>
+        <img class="avatar" ng-src="{{user.img}}">
+      </div>
+
+    </div>
+  </div>
+</div>

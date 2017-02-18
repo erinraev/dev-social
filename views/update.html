@@ -1,0 +1,25 @@
+<!-- Update -->
+<div class="update body-wrap" ng-show="update">
+  <div class="bio-section">
+    <div class="bio-wrap">
+      <h1>{{mainUser.name}}</h1>
+      <p class="tagline">{{mainUser.tagline}}</p>
+      <p class="bio-text">{{mainUser.bio}}</p>
+      <img class="update-avatar" ng-src="{{mainUser.img}}">
+    </div>
+  </div>
+  <div class="update-col">
+    <div class="profile-setting"><p>Profile Settings</p></div>
+    <div class="update-form">
+      <div class="social-information">
+        <form class="input-text">
+          <input class="input-row" type="text" ng-model="user.name" placeholder="Full Name"><br>
+          <input class="input-row" type="text" ng-model="user.tagline" placeholder="Tagline"><br>
+          <input class="input-row" type="text" ng-model="user.img" placeholder="Profile Image URL"><br>
+          <input class="input-row bio-row" type="text" ng-model="user.bio" placeholder="Bio"><br>
+        </form>
+      </div>
+    </div>
+    <div class="update-button" ng-click="updateUser(user)"><p>Save Changes</p></div>
+  </div>
+</div>

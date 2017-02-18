@@ -1,0 +1,21 @@
+<!-- Find -->
+<div class="find body-wrap" ng-show="find">
+  <div class="bio-section">
+    <div class="bio-wrap">
+      <h1>{{mainUser.name}}</h1>
+      <p class="tagline">{{mainUser.tagline}}</p>
+      <p class="bio-text">{{mainUser.bio}}</p>
+    </div>
+  </div>
+
+  <div class="friend-col">
+    <div class="search-section">
+      <img class="search-input-icon" src="searchicon.svg">
+      <input class="search-bar" ng-model='searchFriend.name' type="text" placeholder="Search for Friends">
+    </div>
+    <br>
+    <div class="friend-photos">
+      <img ng-repeat="user in users | filter : searchFriend" ng-click="togglePage('friendview', user)" class="avatar" ng-src="{{user.img}}">
+    </div>
+  </div>
+</div>

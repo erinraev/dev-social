@@ -5,159 +5,39 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400|Open+Sans:300,400,700" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <title>DevMountain Social | Social Network for Anthropomorphics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
   </head>
   <body ng-app="socialApp">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
-    <div ng-controller="mainController" class="social-wrapper">
-    <section class="social-app-wrapper">
-<!-- Header -->
-      <header class="main-nav">
-        <img class="search-icon" src="searchicon.svg">
-        <div class="logo">
-          <h4 class="logo-text" ng-click="togglePage('landing')">DevMountain Social</h4>
-          <p style="font-size: 14px; color: #595959">Social Network for Anthropmorphic Friends</p>
-        </div>
-        <img class="menu-icon" src="menudrop.svg">
-      </header>
-
-<!-- Page Views -->
-        <!-- Initial -->
-        <div class="initial body-wrap" ng-show="initial">
-          <div class="social-information">
-            <p>Welcome to <span class="aqua-text">DevMountain Social</span></p>
-            <p>Add Some Info So Friends Can Find You</p>
-            <form class="input-text">
-              <input class="input-row" type="text" ng-model="newUser.name" placeholder="Full Name"><br>
-              <input class="input-row" type="text" ng-model="newUser.tagline" placeholder="Tagline"><br>
-              <input class="input-row" type="text" ng-model="newUser.img" placeholder="Profile Image URL"><br>
-              <input class="input-row" type="text" ng-model="newUser.bio" placeholder="Bio"><br>
-            </form>
-            <button class="submit-button" ng-click="createUser(newUser); togglePage('landing')">Let's Get Social!</button>
-
+    <div class="social-wrapper">
+      <section class="social-app-wrapper">
+  <!-- Header -->
+        <header class="main-nav">
+          <img class="search-icon" src="searchicon.svg">
+          <div class="logo">
+            <h4 class="logo-text" ng-click="togglePage('landing')">DevMountain Social</h4>
+            <p style="font-size: 14px; color: #595959">Social Network for Anthropmorphic Friends</p>
           </div>
-          <div class="social-photos">
-            <img src="http://target.scene7.com/is/image/Target/17435271?wid=450&hei=450&fmt=pjpeg">
-          </div>
+          <img class="menu-icon" src="menudrop.svg">
+        </header>
 
-        </div>
+  <!-- Page Views -->
+        <ui-view></ui-view>
 
-        <!-- Landing -->
-        <div class="landing body-wrap" ng-show="landing">
-          <div class="bio-section">
-            <h1>{{mainUser.name}}</h1>
-            <p class="tagline">{{mainUser.tagline}}</p>
-            <p class="bio-text">{{mainUser.bio}}</p>
-          </div>
-          <div class="social-photos">
-            <img class="main-avatar" ng-src="{{mainUser.img}}">
-          </div>
-
-        </div>
-
-        <!-- View -->
-        <div class="view body-wrap" ng-show="view">
-          <div class="bio-section">
-            <div class="bio-wrap">
-              <h1>{{mainUser.name}}</h1>
-              <p class="tagline">{{mainUser.tagline}}</p>
-              <p class="bio-text">{{mainUser.bio}}</p>
+  <!-- Footer -->
+        <footer class="main-footer">
+          <div class="footer-links">
+            <div class="footer-text">
+              <div ng-class="{selected: view}" ng-click="togglePage('view')">View Friends</div>
+              <div ng-class="{selected: find}" ng-click="togglePage('find')">Find Friends</div>
+              <div ng-class="{selected: update}" ng-click="togglePage('update')">Update Profile</div>
             </div>
           </div>
-          <div class="friend-col">
-            <div class="search-section">
-              <img class="search-input-icon" src="searchicon.svg">
-              <input class="search-bar" ng-model='searchFriend.name' type="text" placeholder="Friends">
-            </div>
-            <br>
-            <div class="friend-photos">
-              <div class="image-container" ng-repeat="user in users" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                <div class="image-overlay" ng-show="hoverEdit">
-                  <p class="hover-text">{{user.name}}</p>
-                  <div class="view-profile" ng-click="togglePage('friendview', user)">View Profile</div>
-                </div>
-                <img class="avatar" ng-src="{{user.img}}">
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Find -->
-        <div class="find body-wrap" ng-show="find">
-          <div class="bio-section">
-            <div class="bio-wrap">
-              <h1>{{mainUser.name}}</h1>
-              <p class="tagline">{{mainUser.tagline}}</p>
-              <p class="bio-text">{{mainUser.bio}}</p>
-            </div>
-          </div>
-
-          <div class="friend-col">
-            <div class="search-section">
-              <img class="search-input-icon" src="searchicon.svg">
-              <input class="search-bar" ng-model='searchFriend.name' type="text" placeholder="Search for Friends">
-            </div>
-            <br>
-            <div class="friend-photos">
-              <img ng-repeat="user in users | filter : searchFriend" ng-click="togglePage('friendview', user)" class="avatar" ng-src="{{user.img}}">
-            </div>
-          </div>
-        </div>
-
-        <!-- Update -->
-        <div class="update body-wrap" ng-show="update">
-          <div class="bio-section">
-            <div class="bio-wrap">
-              <h1>{{mainUser.name}}</h1>
-              <p class="tagline">{{mainUser.tagline}}</p>
-              <p class="bio-text">{{mainUser.bio}}</p>
-              <img class="update-avatar" ng-src="{{mainUser.img}}">
-            </div>
-          </div>
-          <div class="update-col">
-            <div class="profile-setting"><p>Profile Settings</p></div>
-            <div class="update-form">
-              <div class="social-information">
-                <form class="input-text">
-                  <input class="input-row" type="text" ng-model="user.name" placeholder="Full Name"><br>
-                  <input class="input-row" type="text" ng-model="user.tagline" placeholder="Tagline"><br>
-                  <input class="input-row" type="text" ng-model="user.img" placeholder="Profile Image URL"><br>
-                  <input class="input-row bio-row" type="text" ng-model="user.bio" placeholder="Bio"><br>
-                </form>
-              </div>
-            </div>
-            <div class="update-button" ng-click="updateUser(user)"><p>Save Changes</p></div>
-          </div>
-        </div>
-
-        <!-- Friends -->
-        <div class="landing body-wrap" ng-show="friendview">
-          <div class="bio-section">
-            <h1>{{friend.name}}</h1>
-            <p class="tagline">{{friend.tagline}}</p>
-            <p class="bio-text">{{friend.bio}}</p>
-          </div>
-          <div class="social-photos">
-            <img class="main-avatar" ng-src="{{friend.img}}">
-          </div>
-
-        </div>
-
-
-<!-- Footer -->
-      <footer class="main-footer">
-        <div class="footer-links">
-          <div class="footer-text">
-            <div ng-class="{selected: view}" ng-click="togglePage('view')">View Friends</div>
-            <div ng-class="{selected: find}" ng-click="togglePage('find')">Find Friends</div>
-            <div ng-class="{selected: update}" ng-click="togglePage('update')">Update Profile</div>
-          </div>
-        </div>
-      </footer>
-      </div>
-    </section>
-    <script src="app.js"></script>
-    <script src="controllers.js"></script>
-    <script src="service.js"></script>
+        </footer>
+      </section>
+    </div>
+    <script src="/app.js"></script>
+    <script src="/controllers.js"></script>
+    <script src="/service.js"></script>
   </body>
 </html>
