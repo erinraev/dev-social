@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400|Open+Sans:300,400,700" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <title>DevMountain Social | Social Network for Anthropomorphics</title>
+    <script src="https://use.fontawesome.com/2bb0a6dd01.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
   </head>
@@ -15,7 +16,7 @@
         <header class="main-nav">
           <img class="search-icon" src="searchicon.svg">
           <div class="logo">
-            <h4 class="logo-text" ng-click="togglePage('landing')">DevMountain Social</h4>
+            <h4 class="logo-text" ui-sref="landing">DevMountain Social</h4>
             <p style="font-size: 14px; color: #595959">Social Network for Anthropmorphic Friends</p>
           </div>
           <img class="menu-icon" src="menudrop.svg">
@@ -28,16 +29,17 @@
         <footer class="main-footer">
           <div class="footer-links">
             <div class="footer-text">
-              <div ng-class="{selected: view}" ng-click="togglePage('view')">View Friends</div>
-              <div ng-class="{selected: find}" ng-click="togglePage('find')">Find Friends</div>
-              <div ng-class="{selected: update}" ng-click="togglePage('update')">Update Profile</div>
+              <div ui-sref-active="selected" ui-sref="view">View Friends</div>
+              <div ui-sref-active="selected" ui-sref="find">Find Friends</div>
+              <div ui-sref-active="selected" ui-sref="update">Update Profile</div>
             </div>
           </div>
         </footer>
       </section>
     </div>
-    <script src="/app.js"></script>
-    <script src="/controllers.js"></script>
-    <script src="/service.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/testCtrl.js"></script>
+    <script src="js/service.js"></script>
   </body>
 </html>

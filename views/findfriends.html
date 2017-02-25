@@ -1,10 +1,11 @@
 <!-- Find -->
-<div class="find body-wrap" ng-show="find">
+<div class="find body-wrap">
   <div class="bio-section">
     <div class="bio-wrap">
       <h1>{{mainUser.name}}</h1>
       <p class="tagline">{{mainUser.tagline}}</p>
       <p class="bio-text">{{mainUser.bio}}</p>
+      <img class="main-avatar" ng-src="{{mainUser.img}}">
     </div>
   </div>
 
@@ -15,7 +16,15 @@
     </div>
     <br>
     <div class="friend-photos">
-      <img ng-repeat="user in users | filter : searchFriend" ng-click="togglePage('friendview', user)" class="avatar" ng-src="{{user.img}}">
+      <div class="image-container" ng-repeat="user in users | filter: searchFriend | limitTo: 6 track by $index" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+        <div class="image-overlay" ng-show="hoverEdit">
+          <p class="hover-text">{{user.name}}</p>
+          <div class="view-profile" ng-click="viewFriend(user)">View Profile</div>
+        </div>
+        <img class="avatar" ng-src="{{user.img}}">
+      </div>
+
+    </div>
     </div>
   </div>
 </div>

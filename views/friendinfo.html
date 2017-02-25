@@ -1,12 +1,17 @@
 <!-- Friends -->
-<div class="landing body-wrap" ng-show="friendview">
+<div class="landing body-wrap">
   <div class="bio-section">
     <h1>{{friend.name}}</h1>
     <p class="tagline">{{friend.tagline}}</p>
     <p class="bio-text">{{friend.bio}}</p>
+    <div class="button add-button" ng-click="addFriend(friend)" ng-hide="hideButton()">Add Friend</div>
+    <div class="button remove-button" ng-click="removeFriend(friend)" ng-show="hideButton()">Remove Friend</div>
   </div>
   <div class="social-photos">
     <img class="main-avatar" ng-src="{{friend.img}}">
   </div>
+</div>
 
+<div class="bottom-navigation">
+  <div class="back-button" ui-sref="view"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</div>
 </div>

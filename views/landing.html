@@ -1,8 +1,11 @@
 <!-- Landing -->
-<div class="landing body-wrap" ng-show="landing">
+<div class="landing body-wrap">
   <div class="bio-section">
     <h1>{{mainUser.name}}</h1>
     <p class="tagline">{{mainUser.tagline}}</p>
+    <div class="friend-list" ng-repeat="friend in friendsList">
+      <img class="friend-avatar" ng-click="viewFriend(friend)" ng-src="{{friend.img}}">
+    </div>
     <p class="bio-text">{{mainUser.bio}}</p>
   </div>
   <div class="social-photos">

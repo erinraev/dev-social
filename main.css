@@ -22,6 +22,7 @@ h1 {
   color: #272727;
   font-size: 48px;
   line-height: 56px;
+  margin: 5px 0;
 }
 
 h2 {
@@ -55,6 +56,10 @@ p {
   line-height: 14px;
 }
 
+a {
+  color: #319b5b;
+}
+
 .bio-text {
   color: #000;
   font-family: 'Open Sans', serif;
@@ -73,6 +78,17 @@ p {
 .tagline {
 text-transform: uppercase;
 font-weight: 700;
+}
+
+.warning {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  margin: 30px 0;
+}
+
+.no-friend {
+  margin-top: 10px;
 }
 
 .hover-text {
@@ -203,13 +219,30 @@ font-weight: 700;
 
 /*Landing*/
 
+.friend-avatar {
+  width: 50px;
+  height: 50px;
+}
+
 .main-avatar {
   width: 500px;
   height: 500px;
   border-radius: 50%;
 }
 
+.friend-list {
+  display: inline-block;
+  margin: 0 4px;
+
+
+}
+
 /*View*/
+
+.view {
+  display: flex;
+  justify-content: center;
+}
 
 .bio-section {
   width: 50%;
@@ -217,6 +250,10 @@ font-weight: 700;
 }
 
 .bio-wrap {
+  width: 85%;
+}
+
+.view-friends {
   width: 85%;
 }
 
@@ -302,6 +339,45 @@ font-weight: 700;
   width: 250px;
   border-radius: 50%;
 }
+
+  /*Friend Info*/
+
+  .landing {
+  }
+
+  .bottom-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .back-button {
+    border: 1px solid #000;
+    padding: 5px 15px;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+  }
+
+  .button {
+    color: #fff;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 5px;
+    width: 140px;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+
+  .add-button {
+    background: rgb(73, 91, 92);
+  }
+
+  .remove-button {
+    background: #F45D4A;
+  }
 
    /*Footer Styles   */
 

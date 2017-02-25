@@ -1,25 +1,24 @@
 <!-- View -->
-<div class="view body-wrap" ng-show="view">
-  <div class="bio-section">
-    <div class="bio-wrap">
-      <h1>{{mainUser.name}}</h1>
-      <p class="tagline">{{mainUser.tagline}}</p>
-      <p class="bio-text">{{mainUser.bio}}</p>
-    </div>
-  </div>
-  <div class="friend-col">
+<div class="view body-wrap">
+
+  <div class="view-friends">
     <div class="search-section">
       <img class="search-input-icon" src="searchicon.svg">
       <input class="search-bar" ng-model='searchFriend.name' type="text" placeholder="Friends">
     </div>
     <br>
+    <div ng-show="showWarning()" class="warning">You have no friends yet. <i class="fa fa-frown-o" aria-hidden="true"></i>
+      Go <a ui-sref="find">find some friends!</a>
+      <br><img class="no-friend" src="https://media.giphy.com/media/DBDmOA0RNm1dm/giphy.gif">
+    </div>
+    <br>
     <div class="friend-photos">
-      <div class="image-container" ng-repeat="user in users" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+      <div class="image-container" ng-repeat="friend in friendsList | filter: searchFriend" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <div class="image-overlay" ng-show="hoverEdit">
-          <p class="hover-text">{{user.name}}</p>
-          <div class="view-profile" ng-click="togglePage('friendview', user)">View Profile</div>
+          <p class="hover-text">{{friend.name}}</p>
+          <div class="view-profile" ng-click="viewFriend(friend)">View Profile</div>
         </div>
-        <img class="avatar" ng-src="{{user.img}}">
+        <img class="avatar" ng-src="{{friend.img}}">
       </div>
 
     </div>
