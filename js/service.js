@@ -43,8 +43,9 @@ this.getFriendsList = function () {
 
 
 this.removeFriend = function(friend) {
-  profiles.push(friend);
+  friendsList.splice(friend, 1)
 }
+
 
   var profiles =
     [

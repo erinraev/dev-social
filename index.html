@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
   </head>
   <body ng-app="socialApp">
-    <div class="social-wrapper">
+    <div class="social-wrapper" ng-controller="mainController">
       <section class="social-app-wrapper">
   <!-- Header -->
         <header class="main-nav">
@@ -27,7 +27,7 @@
 
   <!-- Footer -->
         <footer class="main-footer">
-          <div class="footer-links">
+          <div class="footer-links"  ng-hide="$state.current.name === 'welcome'">
             <div class="footer-text">
               <div ui-sref-active="selected" ui-sref="view">View Friends</div>
               <div ui-sref-active="selected" ui-sref="find">Find Friends</div>

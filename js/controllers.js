@@ -1,23 +1,17 @@
 angular.module('socialApp').controller('mainController', function($scope, mainService, $state) {
 
+$scope.$state = $state;
+$scope.users = [];
 
 $scope.friendsList = mainService.getFriendsList();
 
-$scope.users = mainService.getUsers();
+var users = mainService.getUsers();
 
-// getUsers();
-//
-// function getUsers() {
-//   $scope.users = mainService.getUsers();
-//   removeFriendsFromUsers();  //make a function that filters friends out of user list
-// }
+filterUsers(users)
 
 $scope.mainUser = mainService.getMainUser();
 
 $scope.friend = mainService.getFriend();
-
-console.log('my friends', $scope.friendsList)
-  console.log('users', $scope.users)
 
 $scope.showWarning = function() {
   if ($scope.friendsList.length == 0) {
@@ -26,14 +20,13 @@ $scope.showWarning = function() {
 }
 
 $scope.removeFriend = function () {
-  mainService.removeFriend($scope.friend);
-  $scope.friendsList.splice($scope.friend, 1);
+  var friendToRemove = $scope.friendsList.indexOf($scope.friend);
+  mainService.removeFriend(friendToRemove);
   $state.go('view')
 }
 
 $scope.addFriend = function () {
   mainService.addFriend($scope.friend);
-  $scope.users.splice($scope.friend, 1);
   $state.go('view')
 }
 
@@ -73,10 +66,20 @@ $scope.createUser = function (newUser) {
        this.hoverEdit = true;
    };
 
-   $scope.hoverOut = function(){
-       this.hoverEdit = false;
-   };
+ $scope.hoverOut = function(){
+     this.hoverEdit = false;
+ };
 
-
+ function filterUsers(users) {
+   users.forEach(function(user) {
+     let isFriend = false;
+     $scope.friendsList.forEach(function(friend) {
+       if (friend == user) {
+         isFriend = true;
+       }
+     })
+     if (!isFriend) $scope.users.push(user)
+   })
+ }
 
 });
